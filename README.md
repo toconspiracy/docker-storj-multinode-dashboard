@@ -1,14 +1,14 @@
 # Storj Multinode Dashboard Docker image
 *This is an unofficial docker image that make uses of official releases from Storj*
 
-[![](https://img.shields.io/docker/v/odarriba/storj-multinode-dashboard?style=flat-square)](https://hub.docker.com/r/odarriba/storj-multinode-dashboard)
+[![](https://img.shields.io/docker/v/toconspiracy/docker-storj-multinode-dashboard?style=flat-square)](https://github.com/toconspiracy/docker-storj-multinode-dashboard)
 
 This repository contains an unofficial Docker image for running Multinode
 Dashboard in a Docker environment, within an orchestration software like K8s or
 using Docker Compose.
 
 You can find builds of this container named as
-[odarriba/storj-multinode-dashboard](https://hub.docker.com/r/odarriba/storj-multinode-dashboard)
+[odarriba/storj-multinode-dashboard](https://github.com/toconspiracy/docker-storj-multinode-dashboard)
 on Docker Hub, cross built for amd64, armv7 and armv8.
 
 The container tag of those builds is the Storj version number used in the build.
@@ -20,7 +20,7 @@ First of all, generate the identity:
 ```
 $ docker run --rm --entrypoint="create_identity" \
     -v /PATH/TO/IDENTITY:/root/.local/share/storj/identity \
-    odarriba/storj-multinode-dashboard
+    toconspiracy/storj-multinode-dashboard
 ```
 
 Then, you need to generate the initial configuration:
@@ -29,7 +29,7 @@ Then, you need to generate the initial configuration:
 $ docker run --rm \
     -v /PATH/TO/IDENTITY:/root/.local/share/storj/identity \
     -v /PATH/TO/CONFIG:/root/.local/share/storj/multinode \
-    odarriba/storj-multinode-dashboard setup --console.address 0.0.0.0:15002
+    toconspiracy/storj-multinode-dashboard setup --console.address 0.0.0.0:15002
 ```
 
 ***Note:** we are changing the listening address because it will be working inside a
@@ -42,7 +42,7 @@ $ docker run --rm \
     -v /PATH/TO/IDENTITY:/root/.local/share/storj/identity \
     -v /PATH/TO/CONFIG:/root/.local/share/storj/multinode \
     -p 127.0.0.1:15002:15002 \
-    odarriba/storj-multinode-dashboard
+    toconspiracy/storj-multinode-dashboard
 ```
 
 After those steps you have your identity and configuration generated, and you
@@ -83,7 +83,7 @@ This image is ready to do make cross-architecture builds. I'm currently using
 `buildx` for that, using this command line:
 
 ```
-$ docker buildx build --platform linux/arm/v7,linux/arm64/v8,linux/amd64 --push --tag odarriba/storj-multinode-dashboard .
+docker buildx build --platform linux/arm/v7,linux/arm64/v8,linux/amd64 --push -t toconspiracy/docker-storj-multinode-dashboard:latest -t toconspiracy/docker-storj-multinode-dashboard:v.1.94.0-rc .
 ```
 
 However, this is not really necessary unless you are making this kind of builds.
