@@ -8,7 +8,7 @@ Dashboard in a Docker environment, within an orchestration software like K8s or
 using Docker Compose.
 
 You can find builds of this container named as
-[odarriba/storj-multinode-dashboard](https://github.com/toconspiracy/docker-storj-multinode-dashboard)
+[toconspiracy/storj-multinode-dashboard](https://github.com/toconspiracy/docker-storj-multinode-dashboard)
 on Docker Hub, cross built for amd64, armv7 and armv8.
 
 The container tag of those builds is the Storj version number used in the build.
