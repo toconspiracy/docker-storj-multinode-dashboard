@@ -83,7 +83,7 @@ This image is ready to do make cross-architecture builds. I'm currently using
 `buildx` for that, using this command line:
 
 ```
-docker buildx build --platform linux/arm/v7,linux/arm64/v8,linux/amd64 --push -t toconspiracy/docker-storj-multinode-dashboard:latest -t toconspiracy/docker-storj-multinode-dashboard:v.1.94.0-rc .
+docker buildx build --build-arg="STORJ_VERSION=1.98.1" --platform linux/arm/v7,linux/arm64/v8,linux/amd64 --push -t toconspiracy/docker-storj-multinode-dashboard:latest -t toconspiracy/docker-storj-multinode-dashboard:v.1.98.1 .
 ```
 
 However, this is not really necessary unless you are making this kind of builds.
